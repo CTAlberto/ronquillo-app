@@ -21,5 +21,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/type/{type}', [ProductController::class, 'type'])->name('products.type');
 Route::get('/products/location/{location}', [ProductController::class, 'location'])->name('products.location');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 
 require __DIR__.'/auth.php';

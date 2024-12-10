@@ -30,4 +30,28 @@ class ProductController extends Controller
         $types = Type::all();
         return view('products.index') -> with(['products' => $product, 'locations' => $location,'types' => $types]);
     }
+
+    public function create(Request $request)
+    {
+        $types = Type::all();
+        $locations = Location::all();
+
+        if ($request->isMethod('post')) {
+            $product = new Product();
+            $product->name = $request->name;
+            $product->type_id = $request->type_id;
+            $product->location_id = $request->location_id;
+            $product->quantity = $request->quantity;
+            $product->quantity_type_id = $request->quantity_type_id;
+            $product->save();
+            return redirect()->route('products.index');
+        }
+
+        return view('products.create')->with(['types' => $types, 'locations' => $locations]);
+    }
+
+    public function edit($id)
+    {
+        
+    }
 }

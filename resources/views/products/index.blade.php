@@ -5,7 +5,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Productos') }}
             </h2>
-            
             <!-- Botón de filtros -->
             <button 
                 id="toggleFilters" 
@@ -76,6 +75,8 @@
             </div>
         @endif
     </div>
+
+    <button onclick="window.location.href='{{ route('products.create') }}'" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Nuevo Producto</button>
 </x-app-layout>
 
 <script>
