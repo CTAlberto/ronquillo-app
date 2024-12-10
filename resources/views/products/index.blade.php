@@ -3,6 +3,15 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Productos') }}
         </h2>
+        <div class="mt-4 mb-4">
+            <label for="type" class="block text-gray-700">Filtrar por tipo:</label>
+            <select id="type" name="type" class="form-select mt-1 block w-full" onchange="showByType(this.value)">
+                <option value="">Selecciona un tipo</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
     </x-slot>
 
     <div class="mt-10 t-60 max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -32,3 +41,9 @@
         @endif
     </div>
 </x-app-layout>
+
+<script>
+    function showByType(typeId) {
+        window.location.href = '/products/' + typeId;
+    }
+</script>
