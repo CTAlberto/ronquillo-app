@@ -8,10 +8,12 @@
             <!-- Botón de filtros -->
             <button 
                 id="toggleFilters" 
-                class="p-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+                class="p-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
             >
                 Filtros
             </button>
+            <button onclick="window.location.href='{{ route('products.create') }}'" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Nuevo Producto</button>
+            <!--Hacer una etiqueta de borrar filtros -->
         </div>
         
 
@@ -47,11 +49,11 @@
     </div>
 </div>
     </x-slot>
-
     <div class="mt-10 t-60 max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if ($products->isEmpty())
             <p>No hay productos disponibles.</p>
         @else
+        <button id="altern" class="">Alternar colores</button>
             <!--Cards-->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($products as $product)
@@ -69,7 +71,7 @@
                         </div>
                         <div class="px-6 py-4">
 
-                            <button onclick="window.location.href='{{ route('products.edit', ['id' => $product->id]) }}'"  class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Acción</button>
+                            <button onclick="window.location.href='{{ route('products.edit', ['id' => $product->id]) }}'"  class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Editar</button>
                         </div>
                     </div>
                 @endforeach
@@ -77,10 +79,14 @@
         @endif
     </div>
 
-    <button onclick="window.location.href='{{ route('products.create') }}'" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Nuevo Producto</button>
 </x-app-layout>
 
 <script>
+    function alternateListRows(){
+        document.getElementById('altern').addEventListener('click', function(){
+            
+        });
+    }
     function showByType(typeId) {
         window.location.href = '/products/type/' + typeId;
     }

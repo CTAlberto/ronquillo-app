@@ -24,5 +24,6 @@ Route::get('/products/location/{location}', [ProductController::class, 'location
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::post('/products/store/{id}', [ProductController::class, 'storeEdit'])->name('products.storeEdit');
 
 require __DIR__.'/auth.php';

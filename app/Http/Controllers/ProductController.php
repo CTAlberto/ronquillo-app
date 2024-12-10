@@ -57,6 +57,26 @@ class ProductController extends Controller
         ]);
         return redirect()->route('products.index');
     }
+    public function storeEdit(){
+        request()->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'type_id' => 'required',
+            'location_id' => 'required',
+            'quantity' => 'required',
+            'quantity_type_id' => 'required',
+        ]);
+        $product = Product::find(request('id'));
+        $product->update([
+            'name' => request('name'),
+            'type_id' => request('type_id'),
+            'location_id' => request('location_id'),
+            'quantity' => request('quantity'),
+            'quantity_type_id' => request('quantity_type_id'),
+        ]);
+        return redirect()->route('products.index');
+    }
+    
     public function edit($id)
     {
         return view('products.edit')->with(['product' => Product::find($id), 'types' => Type::all(), 'locations' => Location::all(), 'quantity_types' => QuantityType::all()]);
